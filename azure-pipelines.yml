@@ -17,3 +17,9 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- pwsh: Write-Host "##vso[task.setvariable variable=test_variable]True"
+  displayName: 'Set a variable in PowerShell
+- script: echo Variable was assigned
+  condition: eq('${{ variables.test_variable }}', 'True')
+  displayName: 'Read previously assigned variable'
