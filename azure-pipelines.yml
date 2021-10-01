@@ -23,3 +23,12 @@ steps:
 - script: echo Variable was assigned
   condition: eq(variables['test_variable'], 'True')
   displayName: 'Read previously assigned variable'
+
+- task: Cache@2
+  displayName: Cache with secret as key
+  inputs:
+    key: '"test-cache" | "$(SECRET_SOMETHING)"'
+    path: $(Pipeline.Workspace)/cache
+- script: 'echo "cache test" | $(env:CACHE)/placeholder.txt'
+  env:
+    CACHE: $(Pipeline.Workspac)/cache
