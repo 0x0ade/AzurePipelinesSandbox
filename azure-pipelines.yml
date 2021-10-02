@@ -29,6 +29,23 @@ steps:
   inputs:
     key: '"test-cache" | "$(SECRET_SOMETHING)"'
     path: $(Pipeline.Workspace)/cache
-- script: 'echo "cache test" | $(env:CACHE)/placeholder.txt'
+- script: 'mkdir -p $(CACHE) && echo "cache test $(test_variable)" | tee $(CACHE)/placeholder.txt'
   env:
     CACHE: $(Pipeline.Workspac)/cache
+    
+- script: |
+    declare -i BUILD_NUMBER=20+20
+    echo ##vso[task.setvariable variable=build_number]BUILD_NUMBER
+- task: GitHubRelease@0
+  displayName: 'Create GitHub Release'
+  inputs:
+    githubConnection: 0x0ade
+    repositoryName: 0x0ade/AzurePipelinesSandbox
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'manual'
+    tag: 'v1.$(build_number).0'
+    title: 'Stable Build $(build_number)'
+    assets: '$(env:CACHE)'
+    isDraft: true
+
