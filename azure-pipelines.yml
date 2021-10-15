@@ -31,7 +31,7 @@ steps:
     path: $(Pipeline.Workspace)/cache
 - script: 'mkdir -p $(CACHE) && echo "cache test $(test_variable)" | tee $(CACHE)/placeholder.txt'
   env:
-    CACHE: $(Pipeline.Workspac)/cache
+    CACHE: $(Pipeline.Workspace)/cache
     
 - script: |
     declare -i BUILD_NUMBER=20+20
@@ -46,6 +46,6 @@ steps:
     tagSource: 'manual'
     tag: 'v1.$(build_number).0'
     title: 'Stable Build $(build_number)'
-    assets: '$(env:CACHE)'
+    assets: '$(Pipeline.Workspace)/cache'
     isDraft: true
 
