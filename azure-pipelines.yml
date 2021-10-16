@@ -29,13 +29,13 @@ steps:
   inputs:
     key: '"test-cache" | "$(SECRET_SOMETHING)"'
     path: $(Pipeline.Workspace)/cache
-- script: 'mkdir -p $(CACHE) && echo "cache test $(test_variable)" | tee $(CACHE)/placeholder.txt'
+- script: 'mkdir -p $CACHE && echo "cache test $(test_variable)" | tee $CACHE/placeholder.txt'
   env:
     CACHE: $(Pipeline.Workspace)/cache
     
 - script: |
     declare -i BUILD_NUMBER=20+20
-    echo ##vso[task.setvariable variable=build_number]BUILD_NUMBER
+    echo ##vso[task.setvariable variable=build_number]$BUILD_NUMBER
 
 - task: GitHubRelease@1
   displayName: 'Create GitHub Release'
