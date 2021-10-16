@@ -36,16 +36,17 @@ steps:
 - script: |
     declare -i BUILD_NUMBER=20+20
     echo ##vso[task.setvariable variable=build_number]BUILD_NUMBER
-- task: GitHubRelease@0
+
+- task: GitHubRelease@1
   displayName: 'Create GitHub Release'
   inputs:
-    githubConnection: 0x0ade
-    repositoryName: 0x0ade/AzurePipelinesSandbox
+    gitHubConnection: '0x0ade-bot'
+    repositoryName: '0x0ade/AzurePipelinesSandbox'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'manual'
+    tagSource: 'userSpecifiedTag'
     tag: 'v1.$(build_number).0'
     title: 'Stable Build $(build_number)'
     assets: '$(Pipeline.Workspace)/cache'
     isDraft: true
-
+    addChangeLog: false
