@@ -35,7 +35,7 @@ steps:
     
 - script: |
     declare -i BUILD_NUMBER=20+20
-    echo ##vso[task.setvariable variable=build_number]$BUILD_NUMBER
+    echo "##vso[task.setvariable variable=build_number]$BUILD_NUMBER"
 
 - task: GitHubRelease@1
   displayName: 'Create GitHub Release'
@@ -47,6 +47,6 @@ steps:
     tagSource: 'userSpecifiedTag'
     tag: 'v1.$(build_number).0'
     title: 'Stable Build $(build_number)'
-    assets: '$(Pipeline.Workspace)/cache'
+    assets: '$(Pipeline.Workspace)/cache/placeholder.txt'
     isDraft: true
     addChangeLog: false
