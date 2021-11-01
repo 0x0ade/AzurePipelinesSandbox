@@ -17,6 +17,6 @@ steps:
     specificBuildWithTriggering: true
     downloadType: specific
     downloadPath: $(Build.ArtifactStagingDirectory)
-- script: ls -l $(Build.ArtifactStagingDirectory)
+- script: ls -lR $(Build.ArtifactStagingDirectory)
 
 - script: echo "Secondary Pipeline Run Complete"
