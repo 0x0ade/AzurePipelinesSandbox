@@ -1,6 +1,7 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+trigger: none
 resources:
   pipelines:
     - pipeline: build
