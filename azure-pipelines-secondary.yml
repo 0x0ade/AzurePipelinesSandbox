@@ -1,0 +1,10 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+resources:
+  pipelines:
+    - pipeline: build
+      source: 0x0ade.AzurePipelinesSandbox
+
+steps:
+- script: echo "Secondary Pipeline Run"
