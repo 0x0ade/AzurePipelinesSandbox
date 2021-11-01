@@ -7,4 +7,4 @@ resources:
       source: 0x0ade.AzurePipelinesSandbox
 
 steps:
-- script: echo "Secondary Pipeline Run"
+- script: echo "Secondary Pipeline Run Complete"
