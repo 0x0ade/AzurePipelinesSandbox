@@ -10,7 +10,7 @@ steps:
 - task: DownloadBuildArtifacts@1
   inputs:
     buildType: specific
-    project: 0x0ade/AzurePipelinesSandbox
+    project: AzurePipelinesSandbox
     pipeline: 0x0ade.AzurePipelinesSandbox
     specificBuildWithTriggering: true
     downloadType: specific
