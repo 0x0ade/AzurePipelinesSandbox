@@ -7,4 +7,14 @@ resources:
       source: 0x0ade.AzurePipelinesSandbox
 
 steps:
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: specific
+    project: 0x0ade/AzurePipelinesSandbox
+    pipeline: 0x0ade.AzurePipelinesSandbox
+    specificBuildWithTriggering: true
+    downloadType: specific
+    downloadPath: $(Build.ArtifactStagingDirectory)
+- script: ls -l $(Build.ArtifactStagingDirectory)
+
 - script: echo "Secondary Pipeline Run Complete"
