@@ -5,6 +5,7 @@ resources:
   pipelines:
     - pipeline: build
       source: 0x0ade.AzurePipelinesSandbox
+      trigger: true
 
 steps:
 - task: DownloadBuildArtifacts@1
