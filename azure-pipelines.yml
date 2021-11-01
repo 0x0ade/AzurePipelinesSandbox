@@ -29,7 +29,7 @@ steps:
   inputs:
     key: '"test-cache" | "$(SECRET_SOMETHING)"'
     path: $(Pipeline.Workspace)/cache
-- script: 'mkdir -p $CACHE && echo "cache test $(test_variable)" | tee $CACHE/placeholder.txt'
+- script: 'mkdir -p $CACHE && echo "cache test $(test_variable)" | tee $CACHE/placeholder.txt | tee $CACHE/mirror.txt'
   env:
     CACHE: $(Pipeline.Workspace)/cache
 
