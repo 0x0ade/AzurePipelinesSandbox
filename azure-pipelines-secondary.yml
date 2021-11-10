@@ -19,4 +19,6 @@ steps:
     downloadPath: $(Build.ArtifactStagingDirectory)
 - script: ls -lR $(Build.ArtifactStagingDirectory)
 
-- script: echo "Secondary Pipeline Run Complete"
+- script: |
+    echo "Secondary Pipeline Run Complete"
+    echo ${{ resources.pipeline.build.runID }}
