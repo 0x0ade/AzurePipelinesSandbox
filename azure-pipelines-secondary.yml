@@ -22,3 +22,4 @@ steps:
 - script: |
     echo "Secondary Pipeline Run Complete"
     echo ${{ resources.pipeline.build.runID }}
+    echo ${{ resources.pipeline.build.runName }}
